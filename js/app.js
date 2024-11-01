@@ -4,7 +4,8 @@ var productDesc = document.getElementById('productDesc');
 var tableView = document.getElementById('result');
 var submitBtn = document.getElementById('submit');
 
-var productList = [];
+var productList = localStorage.getItem('products') !== null ? JSON.parse(localStorage.getItem('products')):[];
+displayProducts();
 
 var selectedUpdateIndex = -1;
 
@@ -22,6 +23,8 @@ function addProduct(){
         productList.splice(selectedUpdateIndex,1,product);
         submitBtn.innerText = 'save';
     }
+
+    localStorage.setItem('products',JSON.stringify(productList));
 
     displayProducts();
     clearInputs();
@@ -47,6 +50,9 @@ function displayProducts(){
 function deleteProduct(index) { 
 
     productList.splice(index,1);
+
+    localStorage.setItem('products',productList);
+
     displayProducts();
  }
 
@@ -67,3 +73,46 @@ function deleteProduct(index) {
     productName.value = null;
     productPrice.value = null;
  }
+
+//store
+
+//  sessionStorage.setItem('mood','light');
+//  sessionStorage.setItem('age','16');
+
+ 
+ //retrive
+
+//  console.log(sessionStorage.getItem('age'));
+
+ //delete specific item
+
+//  sessionStorage.removeItem('age')
+
+//  sessionStorage.clear()
+
+// frindsList = ['ali','mohamed','mahmoud']
+
+// localStorage.setItem('friendsList',JSON.stringify(frindsList))
+
+// var list = JSON.parse(localStorage.getItem('friendsList'))
+
+// console.log(list);
+
+/*Trenery opretor */
+
+// var age = 16;
+
+// var status;
+
+// if (age >= 16) {
+//     status = 'qualified'
+// } else {
+//     status = 'dis-qualified'
+// }
+
+// console.log(status);
+
+
+// var result =  age >= 16 ? ['qualified'] : null;
+
+// console.log(result);
